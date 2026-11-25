@@ -1,0 +1,3 @@
+{"id": "pubmedqa_19593710", "gold": "yes", "prediction": "maybe", "latency_s": 0.6996832500008168, "trace_id": "f420b7da26aca5722559fcd4e69302f2", "model_calls": 1, "estimated_input_tokens": 3011}
+{"id": "pubmedqa_8921484", "gold": "no", "prediction": "maybe", "latency_s": 0.4095717090094695, "trace_id": "d384d04ce90f02dfa9fa14da8bd1de8b", "model_calls": 1, "estimated_input_tokens": 2930}
+{"id": "pubmedqa_25103647", "gold": "maybe", "prediction": "maybe", "latency_s": 0.44893337500980124, "trace_id": "861cfd03c675691f21479de51d76b994", "model_calls": 1, "estimated_input_tokens": 3083}

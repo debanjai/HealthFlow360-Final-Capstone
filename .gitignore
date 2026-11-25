@@ -1,0 +1,51 @@
+# Secrets, certificates, local state
+.env
+.env.*
+!.env.example
+certs/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.DS_Store
+__MACOSX/
+.vscode/
+*.log
+# Private data and model caches
+data/pdfs/
+data/test_scans/
+models/
+*.safetensors
+*.gguf
+.cache/
+
+# Credentials and private configuration
+.env
+.env.*
+!.env.example
+certs/
+*.pem
+*.key
+*.crt
+
+# Python environment and caches
+.venv/
+venv/
+__pycache__/
+*.pyc
+.cache/
+
+# Development artifacts
+backups/
+*.bak
+*.log
+.vscode/
+.DS_Store
+__MACOSX/
+
+# Model weights and archives
+models/
+*.safetensors
+*.gguf
+*.zip

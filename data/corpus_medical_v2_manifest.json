@@ -1,0 +1,23 @@
+{
+  "attribution": "Source: MedlinePlus, National Library of Medicine.",
+  "source_page": "https://medlineplus.gov/xml.html",
+  "download_url": "https://medlineplus.gov/xml/mplus_topics_compressed_2026-11-25.zip",
+  "local_source": null,
+  "source_sha256": "2cce2a43747286d0d0c8c5a747e720cb764524f38a2b02ab3efa186e91fa7013",
+  "xml_metadata": {
+    "total": "2033",
+    "date-generated": "11/25/2026 02:30:06"
+  },
+  "eligible_documents": 1017,
+  "documents": 750,
+  "chunks": 1275,
+  "unique_chunk_texts": 1275,
+  "seed": 42,
+  "chunk_size": 400,
+  "overlap": 50,
+  "embedding_model": "BAAI/bge-small-en-v1.5",
+  "embedding_limit": 512,
+  "max_chunk_tokens": 403,
+  "documents_sha256": "b6f78dfaf7d2dc1c843eff2b970fd271ccfe01d56090f7f7ee41f2ec7857e309",
+  "corpus_sha256": "83d6802b26c8bbe04589009002d179e06fe5d1d2e27c98513b9a57f0a86f092b"
+}

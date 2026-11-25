@@ -1,0 +1,13 @@
+{
+  "model": "Qwen/Qwen3-8B",
+  "temperature": 0.0,
+  "dataset_hash": "d146cb00de97abf7552fbb39c04a77aced9e8b7ddcda3351ba32308aecc6d45b",
+  "fewshot_hash": "da035b60d3d048b8ea26cb5b67b130645cb613815ecde5c8304bd0569433eb0d",
+  "prompt_code_hash": "d87556ec6e9c20ea3d29b09fb72a89e2223e5214220aa4ceb344bf071aba3279",
+  "runner_hash": "132bb944dbe3dc9d46f30007c86e44f192b529b0dc4a11c720b01d598474b388",
+  "ids": [
+    "pubmedqa_19593710",
+    "pubmedqa_8921484",
+    "pubmedqa_25103647"
+  ]
+}
