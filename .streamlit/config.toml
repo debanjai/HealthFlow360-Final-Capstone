@@ -1,0 +1,19 @@
+# HealthFlow 360 theme - "Clinical Calm" (see docs/UI_CHANGES.md, Round 3)
+[theme]
+base = "light"
+primaryColor = "#0E7468"
+backgroundColor = "#F5F6F4"
+secondaryBackgroundColor = "#FFFFFF"
+textColor = "#17202A"
+linkColor = "#0E7468"
+borderColor = "#DDE2DD"
+baseRadius = "10px"
+font = "Inter:https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+headingFont = "Space Grotesk:https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&display=swap"
+
+[theme.sidebar]
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F5F6F4"
+
+[client]
+toolbarMode = "minimal"
