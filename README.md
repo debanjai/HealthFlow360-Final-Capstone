@@ -23,7 +23,8 @@ It does not diagnose, prescribe or replace clinical judgment.
 - Emergency escalation and clinical review safeguards
 - Prompt injection detection and blocking
 - PDF and DOCX radiology report processing
-- Streamlit interface
+- Streamlit interface ("Clinical Calm" theme) with numbered citation chips,
+  source cards showing title, link and passage, and colour-coded safety states
 - Langfuse observability
 - Docker deployment configuration
 
@@ -110,6 +111,10 @@ Independent clinical validation has not been performed.
     ├── scripts/
     ├── data/
     │   └── evaluation/
+    ├── docs/
+    │   └── UI_CHANGES.md
+    ├── .streamlit/
+    │   └── config.toml
     ├── requirements.txt
     ├── Dockerfile
     ├── .dockerignore
@@ -119,10 +124,14 @@ Independent clinical validation has not been performed.
 
 ### Local Setup
 
-    python3 -m venv .venv
+    python3.11 -m venv .venv
     source .venv/bin/activate
     pip install -r requirements.txt
     cp .env.example .env
+
+Python 3.11 is required. On macOS, plain `python3` may be the system
+Python 3.9, which fails on this codebase; install 3.11 with
+`brew install python@3.11` if needed.
 
 Configure authorized inference and embedding endpoints,
 API credentials and trusted CA certificates in .env.
@@ -132,6 +141,9 @@ Do not commit credentials or private configuration.
 ### Run Locally
 
     streamlit run app.py
+
+The interface theme is set in `.streamlit/config.toml` and is read only
+at start-up: restart Streamlit after pulling theme changes.
 
 ### Docker Setup
 
@@ -161,10 +173,28 @@ These checks do not constitute independent clinical validation.
 
 ### Development History
 
-The application was developed through 18 iterations covering
+The application was developed through 19 iterations covering
 API integration, observability, safety, report processing,
-corpus remediation, prompt engineering, retrieval optimization
-and end-to-end evaluation.
+corpus remediation, prompt engineering, retrieval optimization,
+end-to-end evaluation and user interface refinement.
+
+Iteration 19 (user interface) fixed defects found in UI testing and
+applied a visual redesign:
+
+- Knowledge answers no longer stop mid-sentence
+- Evidence sources show title, link and supporting passage instead of
+  raw document IDs, and citation numbers match the sources list
+- Emergencies, declined requests, errors and unanswered questions
+  each have a distinct visual treatment
+- An "Ask in Knowledge mode" action for questions the corpus does not cover
+- Two-column Report Triage with an urgency-coloured result
+- "Clinical Calm" theme with a slimmer disclaimer, mode descriptions
+  and collapsed request details
+
+Post-change regression testing gave the same results as v2.0:
+70/70 structural task completion, 71 logical generation calls and
+5.59 s mean latency (5.55 s before). Each change, with test results,
+is documented in docs/UI_CHANGES.md.
 
 Detailed development history, evaluation methodology and
 failure taxonomy are maintained in the final evaluation report.
