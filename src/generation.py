@@ -16,7 +16,8 @@ KNOWLEDGE_SYSTEM = (
     "and clearly using your model knowledge. Do not claim to have checked medical sources "
     "or provide fabricated references. Acknowledge uncertainty and limitations. "
     "Do not diagnose the user, prescribe medication, or give individualized treatment plans. "
-    "For potential emergencies, advise immediate professional help."
+    "For potential emergencies, advise immediate professional help. "
+    "Keep the answer under about 250 words and always finish your final sentence."
 )
 ANALYSIS_SYSTEM = (
     "You are a biomedical evidence analyst. Examine only the numbered excerpts. "
@@ -109,6 +110,10 @@ def generate_answer(question: str, evidence: list[Evidence]) -> Answer:
             return Answer(text="Unable to produce a grounded answer with citations.",
                           citations=[], status="abstained")
         cited_ids = list(dict.fromkeys(usable[n - 1].doc_id for n in refs))
+        # Renumber [n] markers so they match the deduplicated citation list shown to
+        # users: excerpts from the same document share one number, numbered 1..N.
+        number_for = {n: cited_ids.index(usable[n - 1].doc_id) + 1 for n in set(refs)}
+        response = re.sub(r"\[(\d+)\]", lambda m: f"[{number_for[int(m.group(1))]}]", response)
         return Answer(text=response, citations=cited_ids, status="answered")
     except Exception:
         logger.exception("Qwen3-8B RAG generation failed")
