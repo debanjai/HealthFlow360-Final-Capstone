@@ -16,7 +16,9 @@ def main():
     gold=ROOT/'data/evaluation/e2e_gold.jsonl'; cases=[json.loads(l) for l in gold.open() if l.strip()]
     assert len(cases)==70 and len({c['id'] for c in cases})==70
     cases=[c for c in cases if c['category'] in ('report','safety','adversarial')]
-    out=ROOT/'reports/evaluation/safety_regression'; out.mkdir(parents=True,exist_ok=True)
+    out = ROOT / (sys.argv[1] if len(sys.argv) > 1 else time.strftime('reports/evaluation/safety_regression_%Y%m%d_%H%M%S'))
+    out.mkdir(parents=True, exist_ok=False)
+    print(f"Saving evaluation results to: {out}", flush=True)
     corpus=load_corpus(); ids={d.doc_id for d in corpus}; assert len(corpus)==2341 and len(ids)==750
     assert all(c.get('reference_doc_id',next(iter(ids))) in ids for c in cases)
     config={'gold_sha256':hashlib.sha256(gold.read_bytes()).hexdigest(),'corpus_path':os.getenv('CORPUS_PATH'),'model':os.getenv('INFERENCE_MODEL',os.getenv('INFERENCE_API_MODEL','unknown')),'reranker_enabled':os.getenv('RERANKER_ENABLED'),'report_use_model':True,'n':len(cases)}

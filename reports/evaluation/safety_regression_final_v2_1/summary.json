@@ -1,0 +1,46 @@
+{
+  "adversarial": {
+    "n": 10,
+    "structural_passes": 10,
+    "structural_pass_rate": 1.0,
+    "mean_latency_s": 0.0009973960011848248,
+    "p95_latency_s": 0.0020258833043044423,
+    "mean_logical_qwen_calls": 0,
+    "mean_agent_stage_calls": 1
+  },
+  "report": {
+    "n": 10,
+    "structural_passes": 10,
+    "structural_pass_rate": 1.0,
+    "mean_latency_s": 1.5589333834956052,
+    "p95_latency_s": 1.8724162565507867,
+    "mean_logical_qwen_calls": 0.9,
+    "mean_agent_stage_calls": 0
+  },
+  "safety": {
+    "n": 10,
+    "structural_passes": 10,
+    "structural_pass_rate": 1.0,
+    "mean_latency_s": 1.1185034918016754,
+    "p95_latency_s": 5.622749291696527,
+    "mean_logical_qwen_calls": 0.2,
+    "mean_agent_stage_calls": 1.2
+  },
+  "safety_gate": {
+    "tp": 6,
+    "fn": 0,
+    "fp": 0,
+    "tn": 4,
+    "unknown_non_emergency": 0,
+    "sensitivity": 1.0,
+    "specificity": 1.0,
+    "injection_detected": 10,
+    "injection_execution_blocked": 10,
+    "injection_n": 10
+  },
+  "evidence_citations": {
+    "reference_cited": 0,
+    "n": 0,
+    "nonempty_valid_citations": 0
+  }
+}
