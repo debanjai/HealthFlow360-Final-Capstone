@@ -1,7 +1,7 @@
 # HealthFlow360
 
 ## Agentic Medical RAG Assistant
-Track B — Capstone Project | Release v2.0
+Track B — Capstone Project | v2.0 release with v2.1 UI and evaluation updates
 
 ### Overview
 
@@ -90,18 +90,59 @@ Evaluated on 20 designated-reference retrieval questions.
 
 #### End-to-End Evaluation
 
-| Metric | Baseline | Final |
-|---|---:|---:|
-| Structural task completion | 54/70 | 70/70 |
-| Emergency detection sensitivity | 66.67% | 100% |
-| Emergency detection specificity | 75% | 100% |
-| Injection execution blocked | 0/10 | 10/10 |
-| Logical generation calls | 84 | 71 |
-| Mean latency | 7.85 s | 5.55 s |
+Final fresh-clone regression: 26 November 2026, application baseline commit `a50edc9`.
 
-These results reflect retrospective benchmark testing.
+| Metric | Pre-remediation | v2.0 | Final v2.1 |
+|---|---:|---:|---:|
+| Structural task completion | 54/70 | 70/70 | 70/70 |
+| Emergency detection sensitivity | 66.67% | 100% | 100% |
+| Emergency detection specificity | 75% | 100% | 100% |
+| Injection detection | 8/10 | 10/10 | 10/10 |
+| Injection execution blocked | 0/10 | 10/10 | 10/10 |
+| Valid citations | — | 20/20 | 20/20 |
+| Designated reference cited | — | 19/20 | 19/20 |
+| Logical generation calls | 84 | 71 | 71 |
+| Weighted mean latency | 7.855 s | 5.547 s | 6.074 s |
+
+| Category | Baseline passes | v2.0 passes | v2.1 passes | v2.1 mean (s) | v2.1 p95 (s) |
+|---|---:|---:|---:|---:|---:|
+| Knowledge | 20/20 | 20/20 | 20/20 | 5.192 | 6.099 |
+| Evidence | 20/20 | 20/20 | 20/20 | 14.756 | 15.851 |
+| Report triage | 9/10 | 10/10 | 10/10 | 1.530 | 1.794 |
+| Safety | 5/10 | 10/10 | 10/10 | 1.087 | 5.444 |
+| Adversarial | 0/10 | 10/10 | 10/10 | 0.002 | 0.003 |
+
+Evidence-mode mean latency increased from 10.087 s to 14.756 s relative to v2.0.
+Runtime and API conditions were uncontrolled; the cause is not established.
+
+#### Targeted Safety Regression and Manual UI Validation
+
+- Targeted regression: 30/30 structural passes (10 report, 10 safety, 10 adversarial).
+- Emergency gate: 6 true positives, 4 true negatives, no false positives or false negatives.
+- Prompt injection: 10/10 detected and blocked.
+- Manual UI validation: five scenarios executed (Knowledge, Evidence, Report Triage, emergency escalation and prompt injection), with 5/5 Langfuse trace coverage. Individual pass outcomes were not separately recorded in the supplied evidence.
+- The targeted regression repeats a subset of the 70 E2E cases; these are 100 executions, not 100 independent cases.
+
+These results reflect retrospective benchmark testing on reused cases.
 Structural completion is not equivalent to clinical accuracy.
-Independent clinical validation has not been performed.
+Independent clinical validation has not been performed. The original qualitative review applies to v2.0; fresh predictions have not been qualitatively reviewed.
+
+#### Evaluation Artifacts and Reproduction
+
+- [Final evaluation report v2.2 (DOCX)](reports/evaluation_documentation/HealthFlow360_Evaluation_Report_v2.2.docx)
+- [Final E2E results](reports/evaluation/e2e_v2_1/) ([summary](reports/evaluation/e2e_v2_1/summary.json))
+- [Targeted safety regression results](reports/evaluation/safety_regression_final_v2_1/) ([summary](reports/evaluation/safety_regression_final_v2_1/summary.json))
+
+Each result directory contains predictions, summary, run configuration and a manual-review CSV. A generated review CSV does not imply completed qualitative scoring.
+
+From the repository root, with the configured environment and production corpus:
+
+```bash
+python3 scripts/run_e2e_evaluation.py
+python3 scripts/run_safety_regression.py
+```
+
+The updated scripts default to timestamped output directories and refuse to overwrite existing directories. An unused output directory can also be supplied as the first argument.
 
 ### Repository Structure
 
@@ -111,6 +152,12 @@ Independent clinical validation has not been performed.
     ├── scripts/
     ├── data/
     │   └── evaluation/
+    ├── reports/
+    │   ├── evaluation/
+    │   │   ├── e2e_v2_1/
+    │   │   └── safety_regression_final_v2_1/
+    │   └── evaluation_documentation/
+    │       └── HealthFlow360_Evaluation_Report_v2.2.docx
     ├── docs/
     │   └── UI_CHANGES.md
     ├── .streamlit/
@@ -158,7 +205,7 @@ With valid environment configuration and trusted certificates:
 
 Open http://localhost:8501
 
-Docker build and local runtime validation completed successfully.
+Docker build and local runtime validation completed successfully for the original v2.0 image. The latest UI-integrated application was validated locally from a fresh clone; updated Docker build and runtime validation were deferred.
 
 - Platform: Apple Silicon / Linux ARM64
 - Docker image: healthflow360:2.0
@@ -191,10 +238,9 @@ applied a visual redesign:
 - "Clinical Calm" theme with a slimmer disclaimer, mode descriptions
   and collapsed request details
 
-Post-change regression testing gave the same results as v2.0:
-70/70 structural task completion, 71 logical generation calls and
-5.59 s mean latency (5.55 s before). Each change, with test results,
-is documented in docs/UI_CHANGES.md.
+Intermediate post-UI regression testing retained 70/70 structural completion and 71 logical generation calls, with 5.59 s mean latency (5.55 s before). Each UI change, with test results, is documented in [docs/UI_CHANGES.md](docs/UI_CHANGES.md).
+
+Final fresh-clone validation on 26 November 2026 (application baseline `a50edc9`) confirmed 750 documents and 2,341 chunks, 70/70 E2E structural passes, 30/30 targeted regression passes and five manual UI scenarios with Langfuse traces. Final mean E2E latency was 6.074 s; evidence-mode latency increased relative to v2.0. Evaluation scripts were updated to protect existing result directories.
 
 Detailed development history, evaluation methodology and
 failure taxonomy are maintained in the final evaluation report.
@@ -206,6 +252,8 @@ failure taxonomy are maintained in the final evaluation report.
 - No medical image interpretation or OCR.
 - External inference and embedding services are required.
 - Cold-start latency depends on corpus initialization.
+- Final evidence-mode latency increased; the cause remains unverified.
+- Fresh prediction qualitative review and updated Docker validation remain outstanding.
 - Citation validity does not guarantee semantic grounding.
 - Session state is process-local.
 - Safety rules cannot guarantee detection of every emergency.

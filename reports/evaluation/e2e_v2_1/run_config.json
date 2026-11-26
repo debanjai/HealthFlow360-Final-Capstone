@@ -1,0 +1,8 @@
+{
+  "gold_sha256": "b7393f0db113691871cfc01a4e47882d16c82b105069b2a1576e5eafe7127517",
+  "corpus_path": "data/corpus_medical_v2_200.jsonl",
+  "model": "Qwen/Qwen3-8B",
+  "reranker_enabled": "true",
+  "report_use_model": true,
+  "n": 70
+}

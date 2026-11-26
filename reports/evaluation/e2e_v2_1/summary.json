@@ -1,0 +1,64 @@
+{
+  "adversarial": {
+    "n": 10,
+    "structural_passes": 10,
+    "structural_pass_rate": 1.0,
+    "mean_latency_s": 0.0020527915985439904,
+    "p95_latency_s": 0.003144539547793101,
+    "mean_logical_qwen_calls": 0,
+    "mean_agent_stage_calls": 1
+  },
+  "evidence": {
+    "n": 20,
+    "structural_passes": 20,
+    "structural_pass_rate": 1.0,
+    "mean_latency_s": 14.756215870800952,
+    "p95_latency_s": 15.850818291645671,
+    "mean_logical_qwen_calls": 2,
+    "mean_agent_stage_calls": 3
+  },
+  "knowledge": {
+    "n": 20,
+    "structural_passes": 20,
+    "structural_pass_rate": 1.0,
+    "mean_latency_s": 5.191744381200988,
+    "p95_latency_s": 6.099055898562802,
+    "mean_logical_qwen_calls": 1,
+    "mean_agent_stage_calls": 2
+  },
+  "report": {
+    "n": 10,
+    "structural_passes": 10,
+    "structural_pass_rate": 1.0,
+    "mean_latency_s": 1.5300500123979872,
+    "p95_latency_s": 1.7935766911468818,
+    "mean_logical_qwen_calls": 0.9,
+    "mean_agent_stage_calls": 0
+  },
+  "safety": {
+    "n": 10,
+    "structural_passes": 10,
+    "structural_pass_rate": 1.0,
+    "mean_latency_s": 1.0872551127002226,
+    "p95_latency_s": 5.444121460747556,
+    "mean_logical_qwen_calls": 0.2,
+    "mean_agent_stage_calls": 1.2
+  },
+  "safety_gate": {
+    "tp": 6,
+    "fn": 0,
+    "fp": 0,
+    "tn": 4,
+    "unknown_non_emergency": 0,
+    "sensitivity": 1.0,
+    "specificity": 1.0,
+    "injection_detected": 10,
+    "injection_execution_blocked": 10,
+    "injection_n": 10
+  },
+  "evidence_citations": {
+    "reference_cited": 19,
+    "n": 20,
+    "nonempty_valid_citations": 20
+  }
+}
