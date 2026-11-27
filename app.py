@@ -52,6 +52,7 @@ h1{font-size:2rem !important;line-height:1.1 !important}
 .hf-tags{display:flex;gap:8px;align-items:center;font-size:12px;font-weight:600;margin-bottom:6px}
 .hf-tag{padding:3px 9px;border-radius:999px;background:#E3F1EE;color:#0A5A51}
 .hf-tag.k{background:#ECEFEC;color:#3B4650}
+.hf-tag.s{background:#FBE9E7;color:#8F2A1E}
 .hf-meta{color:#56616B;font-weight:500}
 .hf-cite{font-size:12px;font-weight:600;padding:1px 6px;border-radius:5px;background:#E3F1EE;color:#0A5A51}
 .hf-box{display:flex;gap:14px;padding:16px;border-radius:12px;margin:4px 0 8px;line-height:1.5}
@@ -211,7 +212,14 @@ def render_assistant_message(message: dict) -> None:
     is_emergency = status == "escalated" and content == EMERGENCY
     is_refusal = status == "escalated" and content == REFUSAL
 
-    tag = '<span class="hf-tag">Evidence</span>' if mode == "evidence" else '<span class="hf-tag k">Knowledge</span>'
+    # Escalations come from the deterministic safety gate before any model call, so they are
+    # attributed to the safety check rather than to the mode the question was asked in.
+    if is_emergency or is_refusal:
+        tag = '<span class="hf-tag s">Safety check</span>'
+    elif mode == "evidence":
+        tag = '<span class="hf-tag">Evidence</span>'
+    else:
+        tag = '<span class="hf-tag k">Knowledge</span>'
     extra = f'<span class="hf-meta">{len(citations)} source{"s" if len(citations) != 1 else ""}</span>' if citations else ""
     html_block(f'<div class="hf-tags">{tag}{extra}</div>')
 
@@ -230,6 +238,9 @@ def render_assistant_message(message: dict) -> None:
         if citations:
             body = re.sub(r"\[(\d+)\]", r'<span class="hf-cite">\1</span>', body)
         st.markdown(body, unsafe_allow_html=True)
+
+    if is_emergency or is_refusal:
+        st.caption("Stopped by the safety check before any model was called.")
 
     if status == "answered" and mode == "knowledge" and looks_truncated(content):
         st.caption("This answer reached the length limit and may be incomplete. Try a narrower question.")
@@ -264,6 +275,8 @@ def render_assistant_message(message: dict) -> None:
     else:
         status_label = STATUS_LABELS.get(status, str(status))
     rows = [f"Status: {status_label}"]
+    if is_emergency or is_refusal:
+        rows.append("Handled by: safety check (no retrieval or model call)")
     if message.get("trace_id"):
         rows.append(f"Request ID: `{message['trace_id']}`")
     label = "Details"
@@ -397,7 +410,11 @@ else:
         html_block('<div class="hf-box hf-note"><div><strong>First question takes a few minutes</strong>'
                    'The first Evidence question after a restart loads the search index for 2,341 passages '
                    '(the very first run also downloads about 1 GB). Later questions take seconds.</div></div>')
+    # Each mode shows only its own conversation, so the page title and sidebar guidance
+    # always match the answers on screen.
     for message in st.session_state.messages:
+        if message.get("mode") != mode:
+            continue
         avatar = ":material/person:" if message["role"] == "user" else ":material/medical_services:"
         with st.chat_message(message["role"], avatar=avatar):
             if message["role"] == "assistant":
