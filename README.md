@@ -220,7 +220,7 @@ These checks do not constitute independent clinical validation.
 
 ### Development History
 
-The application was developed through 19 iterations covering
+The application was developed through 20 iterations covering
 API integration, observability, safety, report processing,
 corpus remediation, prompt engineering, retrieval optimization,
 end-to-end evaluation and user interface refinement.
@@ -241,6 +241,13 @@ applied a visual redesign:
 Intermediate post-UI regression testing retained 70/70 structural completion and 71 logical generation calls, with 5.59 s mean latency (5.55 s before). Each UI change, with test results, is documented in [docs/UI_CHANGES.md](docs/UI_CHANGES.md).
 
 Final fresh-clone validation on 26 November 2026 (application baseline `a50edc9`) confirmed 750 documents and 2,341 chunks, 70/70 E2E structural passes, 30/30 targeted regression passes and five manual UI scenarios with Langfuse traces. Final mean E2E latency was 6.074 s; evidence-mode latency increased relative to v2.0. Evaluation scripts were updated to protect existing result directories.
+
+Iteration 20 (27 November 2026) fixed two UI findings from the evaluation, in display code only (`app.py`):
+
+- Emergency and declined responses are attributed to the safety check ("Safety check" badge, with a note that no model was called) instead of the mode the question was asked in
+- Each mode shows only its own conversation, so the page title and sidebar guidance always match the answers on screen
+
+The fresh regression passed 70/70 E2E and 30/30 targeted safety checks with 71 logical generation calls; mean E2E latency was 4.855 s and evidence mode returned to its v2.0 level (10.17 s). Results: `reports/evaluation/e2e_20261127_084127/` and `reports/evaluation/safety_regression_20261127_084748/`; before/after screenshots: `reports/evaluation/ui_iteration20_screenshots/`.
 
 Detailed development history, evaluation methodology and
 failure taxonomy are maintained in the final evaluation report.
