@@ -1,3 +1,9 @@
+"""
+00 Schemas: Define data structures for document chunks, evidence, plans, safety decisions, and answers
+Module: 00 Schemas
+Author: Debanjali Ghosh
+"""
+
 from pydantic import BaseModel, Field
 from typing import Literal
 

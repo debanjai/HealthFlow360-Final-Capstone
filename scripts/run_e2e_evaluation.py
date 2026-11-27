@@ -1,4 +1,11 @@
 """Retrospective synthetic/source-derived evaluation; run from project root."""
+"""
+05 Evaluation Safety: Run the end-to-end evaluation suite
+Module: 05 Evaluation Safety
+Author: Debanjali Ghosh
+
+"""
+
 import os, sys, json, time, hashlib, statistics, csv
 from pathlib import Path
 from collections import Counter

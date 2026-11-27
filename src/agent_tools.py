@@ -1,4 +1,11 @@
 """Allowlisted tool dispatch with bounded steps and metadata-only tracing."""
+"""
+09 Agent Tools: Listed Tool Dispatch with bounded steps
+Module: 09 Agent Tools
+Author: Debanjali Ghosh
+
+"""
+
 from .observability import span, update
 
 class Executor:

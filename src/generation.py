@@ -1,4 +1,9 @@
 """HealthFlow 360: direct Qwen3-8B knowledge and evidence-grounded RAG generation."""
+"""
+03 Generation : Direct Qwen3-8B knowledge and evidence-grounded RAG generation for HealthFlow 360
+Module: 03 Generation
+Author: Debanjali Ghosh
+"""
 from __future__ import annotations
 
 import logging

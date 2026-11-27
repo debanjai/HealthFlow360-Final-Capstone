@@ -1,4 +1,11 @@
 """Prepare PubMedQA for HealthFlow360 without calling inference APIs."""
+"""
+05 Evaluation Safety: Prepare PubMedQA labeled and evaluation datasets
+Module: 05 Evaluation Safety
+Author: Debanjali Ghosh
+
+"""
+
 import argparse
 import hashlib
 import json

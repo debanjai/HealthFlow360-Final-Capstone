@@ -1,4 +1,11 @@
 """Safety-first deterministic planner, executor and structural critic."""
+"""
+08 Agent: Deterministic Planner, Executor and Structural Critic
+Module: 08 Agent
+Author: Debanjali Ghosh
+
+"""
+
 from __future__ import annotations
 import logging
 import os

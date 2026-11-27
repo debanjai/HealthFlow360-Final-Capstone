@@ -1,4 +1,9 @@
 """Private, in-memory PDF/DOCX radiology-report extraction (not RAG corpus indexing)."""
+"""
+06 Report Ingest: Ingest and extract text from radiology reports
+Module: 06 Report Ingest
+Author: Debanjali Ghosh
+"""
 from __future__ import annotations
 
 from io import BytesIO

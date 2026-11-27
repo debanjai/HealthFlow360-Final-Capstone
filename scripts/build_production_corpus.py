@@ -1,3 +1,10 @@
+"""
+1 Medical Corpus: Build the frozen 200-token production corpus
+Module: 1 Medical Corpus
+Author: Debanjali Ghosh
+
+"""
+
 import sys, json, hashlib
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parent.parent))

@@ -1,4 +1,10 @@
 """Shared signatures. Implementations belong in owner modules."""
+"""
+11 Interfaces: Shared signatures for HealthFlow 360
+Module: 11 Interfaces
+Author: Gautam Singh
+"""
+
 from collections.abc import Sequence
 from .schemas import DocumentChunk, Evidence, Answer, SafetyDecision
 

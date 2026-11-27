@@ -1,10 +1,8 @@
 """src/ingest.py - Data ingestion and chunking module for HealthFlow 360.
 
-Owner: Member 1
-Contract:
-    Input: Source documents (raw text or document dictionaries)
-    Output: list[DocumentChunk]
-    Acceptance: Stable chunk IDs, preserved metadata, no empty text fields, 500+ records.
+01 Ingest: Data ingestion and chunking for HealthFlow 360
+Module: 01 Ingest
+Author: Debanjali Ghosh
 """
 
 from __future__ import annotations

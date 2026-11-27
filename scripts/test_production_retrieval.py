@@ -1,3 +1,10 @@
+"""
+02 Retrieval: Validate the configured production retrieval stack
+Module: 02 Retrieval
+Author: Debanjali Ghosh
+
+"""
+
 import sys, json, time
 from pathlib import Path
 from unittest.mock import patch

@@ -1,4 +1,11 @@
-"""Member 2: Hybrid retrieval (BM25 + dense embeddings)."""
+"""Hybrid retrieval (BM25 + dense embeddings)."""
+"""
+02 Retrieval: Hybrid retrieval (BM25 + dense embeddings) for HealthFlow 360
+Module: 02 Retrieval
+Author: Debanjali Ghosh
+"""
+
+
 from typing import Optional
 import os
 import time

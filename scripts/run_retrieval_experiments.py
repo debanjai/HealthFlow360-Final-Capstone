@@ -1,4 +1,11 @@
 """Run from project root: python3 scripts/run_retrieval_experiments.py."""
+"""
+02 Retrieval: Run retrieval chunking and reranking experiments
+Module: 02 Retrieval
+Author: Debanjali Ghosh
+
+"""
+
 import sys, json, hashlib, time, csv, os, argparse
 from pathlib import Path
 from collections import Counter

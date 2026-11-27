@@ -1,4 +1,9 @@
 """Opt-in metadata-only Langfuse tracing; never capture arguments or return text."""
+"""
+12 Observability: Trace model client calls
+Module: 12 Observability
+Author: Debanjali Ghosh
+"""
 import os
 from contextlib import contextmanager
 from functools import wraps
