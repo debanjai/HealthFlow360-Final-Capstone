@@ -49,3 +49,6 @@ models/
 *.safetensors
 *.gguf
 *.zip
+
+# Restricted UI screenshot evidence
+reports/evaluation/ui_iteration20_screenshots/

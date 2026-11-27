@@ -259,9 +259,11 @@ Evaluation evidence:
 
 - `reports/evaluation/e2e_20261127_084127/`
 - `reports/evaluation/safety_regression_20261127_084748/`
-- `reports/evaluation/ui_iteration20_screenshots/`
+
 
 Detailed development history, evaluation methodology and failure taxonomy are maintained in the [Evaluation Report v2.3](reports/evaluation_documentation/HealthFlow360_Evaluation_Report_v2.3.docx).
+
+UI validation screenshots are retained separately in restricted project storage to protect session identifiers and operational metadata. The repository retains the structured evaluation results and regression evidence.
 
 Iteration 20 represents the final completed development iteration.
 
@@ -295,6 +297,21 @@ and development logs are excluded from version control.
 
 Dataset usage remains subject to original source terms.
 
+### Dataset Licensing and Attribution
+
+MedlinePlus: Source: MedlinePlus, National Library of Medicine. The corpus uses publicly available health-topic summaries obtained through the MedlinePlus XML distribution. https://medlineplus.gov/about/using/usingcontent/
+
+PubMedQA: Jin et al. (2019), PubMedQA: A Dataset for Biomedical Research Question Answering. The upstream repository uses the MIT License. Underlying publication rights remain with their respective copyright holders. https://github.com/pubmedqa/pubmedqa
+
+Evaluation fixtures: Project-specific retrieval, safety and end-to-end regression cases are intended for educational system evaluation, not clinical validation.
+
+Third-party dataset content remains subject to its applicable source terms. HealthFlow360 does not claim ownership of third-party medical content or endorsement by its publishers.
+
+### Evaluation Evidence and Privacy
+
+Structured evaluation results are maintained in the repository. Original UI screenshots and operational trace evidence are retained separately in restricted project storage.
+
+The repository's Git history was scanned using Gitleaks, with no secrets detected across 20 commits at the time of the audit. This does not constitute a comprehensive security or privacy certification.
 ### Acknowledgements
 
 Developed as a collaborative Track B capstone project.
