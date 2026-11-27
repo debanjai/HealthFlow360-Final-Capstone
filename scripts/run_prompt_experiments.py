@@ -1,4 +1,11 @@
 """Run from project root; smoke and full results are separate."""
+"""
+04 Prompt Experiments: Run PubMedQA prompt strategy experiments
+Module: 04 Prompt Experiments
+Author: Debanjali Ghosh
+
+"""
+
 import argparse, csv, hashlib, json, os, sys, time
 from pathlib import Path
 from collections import Counter

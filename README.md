@@ -242,15 +242,28 @@ Intermediate post-UI regression testing retained 70/70 structural completion and
 
 Final fresh-clone validation on 26 November 2026 (application baseline `a50edc9`) confirmed 750 documents and 2,341 chunks, 70/70 E2E structural passes, 30/30 targeted regression passes and five manual UI scenarios with Langfuse traces. Final mean E2E latency was 6.074 s; evidence-mode latency increased relative to v2.0. Evaluation scripts were updated to protect existing result directories.
 
-Iteration 20 (27 November 2026) fixed two UI findings from the evaluation, in display code only (`app.py`):
+**Iteration 20 (27 November 2026)** addressed two UI findings through display-only changes in `app.py`:
 
-- Emergency and declined responses are attributed to the safety check ("Safety check" badge, with a note that no model was called) instead of the mode the question was asked in
-- Each mode shows only its own conversation, so the page title and sidebar guidance always match the answers on screen
+- Emergency and declined responses are attributed to the safety check using a "Safety check" badge and an explicit notification that no model was called.
+- Knowledge Mode and Evidence Mode display their respective conversations, maintaining consistency between the displayed responses and mode-specific guidance.
 
-The fresh regression passed 70/70 E2E and 30/30 targeted safety checks with 71 logical generation calls; mean E2E latency was 4.855 s and evidence mode returned to its v2.0 level (10.17 s). Results: `reports/evaluation/e2e_20261127_084127/` and `reports/evaluation/safety_regression_20261127_084748/`; before/after screenshots: `reports/evaluation/ui_iteration20_screenshots/`.
+Post-change regression achieved:
 
-Detailed development history, evaluation methodology and
-failure taxonomy are maintained in the final evaluation report.
+- End-to-end structural completion: **70/70 (100%)**
+- Targeted safety regression: **30/30 (100%)**
+- Logical generation calls: **71** across the E2E suite
+- Mean E2E latency: **4.855 seconds**
+- Evidence Mode mean latency: **10.17 seconds**, compared with 14.76 seconds in Iteration 19 and 10.09 seconds in v2.0.
+
+Evaluation evidence:
+
+- `reports/evaluation/e2e_20261127_084127/`
+- `reports/evaluation/safety_regression_20261127_084748/`
+- `reports/evaluation/ui_iteration20_screenshots/`
+
+Detailed development history, evaluation methodology and failure taxonomy are maintained in the [Evaluation Report v2.3](reports/evaluation_documentation/HealthFlow360_Evaluation_Report_v2.3.docx).
+
+Iteration 20 represents the final completed development iteration.
 
 ### Limitations
 
@@ -265,6 +278,9 @@ failure taxonomy are maintained in the final evaluation report.
 - Session state is process-local.
 - Safety rules cannot guarantee detection of every emergency.
 - Do not submit identifiable patient information.
+- Dedicated violence-risk detection and escalation remain an open safety limitation (F055).
+- HealthFlow360 is not intended for crisis intervention or autonomous clinical decision-making.
+- Reported safety and structural completion metrics apply only to the evaluated test cases and do not establish clinical validity or comprehensive safety coverage.
 
 ### Security and Privacy
 

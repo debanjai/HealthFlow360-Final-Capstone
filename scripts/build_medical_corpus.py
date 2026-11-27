@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
 """Build a versioned MedlinePlus corpus without modifying the active corpus."""
+"""
+1 Medical Corpus: Build a versioned MedlinePlus corpus without modifying the active corpus
+Module: 1 Medical Corpus
+Author: Debanjali Ghosh
+
+"""
+
 import argparse, hashlib, io, json, random, re, sys, zipfile
 from pathlib import Path
 from urllib.request import urlopen

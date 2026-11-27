@@ -2,7 +2,12 @@
 
 Not a diagnostic tool. Image-only outputs never assign routine/low urgency.
 No uploaded image/report content is persisted by this module.
+
+07 Report Triage: Conservative educational scan/report specialist routing
+Module: 07 Report Triage
+Author: Debanjali Ghosh
 """
+
 from __future__ import annotations
 
 import re

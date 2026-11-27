@@ -1,4 +1,9 @@
 """Offline benchmark prompts; production generation remains unchanged."""
+"""
+04 Prompt Experiments: Experiment with different prompting strategies
+Module: 04 Prompt Experiments
+Author: Debanjali Ghosh
+"""
 import re
 from .model_clients import qwen_chat
 

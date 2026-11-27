@@ -1,4 +1,9 @@
 """HealthFlow 360 clients: hosted Qwen text, Ollama fallback, embeddings."""
+"""
+00 Model Clients: Call Hosted Qwen text generation, Ollama fallback, and embeddings Models
+Module: 00 Model Clients
+Author: Debanjali Ghosh
+"""
 from __future__ import annotations
 
 import os

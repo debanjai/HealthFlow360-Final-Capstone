@@ -1,4 +1,11 @@
 """Offline mocked orchestration checks; no inference calls."""
+"""
+08 Agent: Test agent planning, safety, evidence, and error handling
+Module: 08 Agent
+Author: Debanjali Ghosh
+
+"""
+
 import sys
 from pathlib import Path
 from unittest.mock import patch

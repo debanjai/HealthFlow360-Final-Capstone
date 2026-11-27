@@ -1,4 +1,10 @@
 """Lightweight Streamlit request safeguards; no model imports or sensitive payload logging."""
+"""
+11 App Support: Streamlit Request Safeguards and Observability
+Module: 11 App Support
+Author: Gautam Singh
+
+"""
 from __future__ import annotations
 
 import logging

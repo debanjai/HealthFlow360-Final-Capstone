@@ -1,4 +1,11 @@
 """Bounded process-local session state; no disk persistence."""
+"""
+10 Agent State: Bounded process local session state
+Module: 10 Agent State
+Author: Debanjali Ghosh
+
+"""
+
 from collections import OrderedDict
 from copy import deepcopy
 from threading import RLock
